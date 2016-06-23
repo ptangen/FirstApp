@@ -18,6 +18,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class DisplayMessageActivity extends AppCompatActivity {
 
+    TextView textView;
+    String message;
+    Intent intent;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -43,10 +46,10 @@ public class DisplayMessageActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+        intent = getIntent();
+        message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
 
-        TextView textView = new TextView(this);
+        textView = new TextView(this);
         textView.setTextSize(40);
         textView.setPadding(40, 200, 40, 40);
         textView.setText(message);
@@ -60,6 +63,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();  // Always call the superclass method first
+
+        // this is what I was unable to do yesterday. It works fine today. Not sure what is different.
+        textView.setText("my message from onResume");
 
     }
 
