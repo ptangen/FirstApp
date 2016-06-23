@@ -46,13 +46,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        intent = getIntent();
-        message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
-
         textView = new TextView(this);
         textView.setTextSize(40);
         textView.setPadding(40, 200, 40, 40);
-        textView.setText(message);
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.content);
         layout.addView(textView);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -64,8 +60,10 @@ public class DisplayMessageActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();  // Always call the superclass method first
 
-        // this is what I was unable to do yesterday. It works fine today. Not sure what is different.
-        textView.setText("my message from onResume");
+        // Jane: This is what I was unable to do yesterday. It works fine today. Not sure what is different.
+        intent = getIntent();
+        message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+        textView.setText(message);
 
     }
 
